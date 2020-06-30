@@ -1,5 +1,4 @@
 <h1><%= @article.title %> </h1>
-<br>
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
@@ -8,6 +7,11 @@
 </p>
 <br>
 <p> <%= @article.body %> </p>
+<p>
+    <% if @article.image.exists? %>
+      <%= image_tag @article.image.url %>
+    <% end %>
+</p>
 <br>
 <%= link_to "edit", edit_article_path(@article) %>
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
